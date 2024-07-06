@@ -7,6 +7,6 @@ export const backgroundColors = {
 };
 
 export const BackgroundColorContext = createContext({
-  color: backgroundColors.blue,
+  color: backgroundColors.primary,
   changeColor: (color) => {},
 });
