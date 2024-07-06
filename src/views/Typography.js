@@ -2,6 +2,9 @@ import React from "react";
 import { Card, CardHeader, CardBody, Col, Row, Button, Progress } from "reactstrap";
 import styled from "styled-components";
 import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale } from "chart.js";
+
+ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
 const activeCampaigns = [
   {
@@ -11,23 +14,23 @@ const activeCampaigns = [
     description: "Our community has been devastated by a recent wildfire, leaving many families without homes. We are seeking your support to help rebuild these homes and restore hope to those affected. Your contributions will go towards construction materials, labor costs, transportation and essential household items. Let's come together and make a difference!",
     goal: 4.20,
     collected: 3.5,
-    endDate: "2024-9-30",
+    endDate: "2024-09-30",
     image: process.env.PUBLIC_URL + "/campaign-01.jpg",
     donations: [
-    { "date": "2024-01-01", "amount": 0.0 },
-    { "date": "2024-01-18", "amount": 0.27 },
-    { "date": "2024-02-5", "amount": 0.71 },
-    { "date": "2024-02-28", "amount": 1.1 },
-    { "date": "2024-03-05", "amount": 1.2 },
-    { "date": "2024-03-16", "amount": 1.4 },
-    { "date": "2024-04-07", "amount": 1.95 },
-    { "date": "2024-04-19", "amount": 2.4 },
-    { "date": "2024-04-30", "amount": 2.6 },
-    { "date": "2024-05-02", "amount": 2.75 },
-    { "date": "2024-06-01", "amount": 3.09 },
-    { "date": "2024-06-21", "amount": 3.36 },
-    { "date": "2024-07-07", "amount": 3.5 },
-    ]
+      { date: "2024-01-01", amount: 0.0 },
+      { date: "2024-01-18", amount: 0.27 },
+      { date: "2024-02-05", amount: 0.71 },
+      { date: "2024-02-28", amount: 1.1 },
+      { date: "2024-03-05", amount: 1.2 },
+      { date: "2024-03-16", amount: 1.4 },
+      { date: "2024-04-07", amount: 1.95 },
+      { date: "2024-04-19", amount: 2.4 },
+      { date: "2024-04-30", amount: 2.6 },
+      { date: "2024-05-02", amount: 2.75 },
+      { date: "2024-06-01", amount: 3.09 },
+      { date: "2024-06-21", amount: 3.36 },
+      { date: "2024-07-07", amount: 3.5 },
+    ],
   },
 ];
 
@@ -73,7 +76,7 @@ const CampaignsGrid = () => {
     return Math.min((collected / goal) * 100, 100);
   };
 
-  const campaign = activeCampaigns[0]; 
+  const campaign = activeCampaigns[0];
 
   const chartData = {
     labels: campaign.donations.map((donation) => formatDate(donation.date)),
@@ -84,8 +87,63 @@ const CampaignsGrid = () => {
         fill: false,
         borderColor: "rgb(255, 78, 202)",
         tension: 0.1,
+        borderWidth: 3,
+        pointRadius: 3,
+        pointBackgroundColor: "rgba(255, 78, 202, 0.8)",
+        pointBorderColor: "rgb(255, 78, 202)",
+        pointHoverRadius: 7,
+        pointHoverBackgroundColor: "rgba(255, 78, 202, 1)",
+        pointHoverBorderColor: "rgba(255, 78, 202, 1)",
+        pointHoverBorderWidth: 2,
+        shadowOffsetX: 0,
+        shadowOffsetY: 10,
+        shadowBlur: 20,
+        shadowColor: "rgba(255, 78, 202, 0.5)",
       },
     ],
+  };
+
+  const chartOptions = {
+    plugins: {
+      tooltip: {
+        mode: "index",
+        intersect: false,
+      },
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Date',
+          color: '#555',
+        },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'ETH Collected',
+          color: '#555',
+        },
+      },
+    },
+    elements: {
+      line: {
+        borderWidth: 2,
+        shadow: true,
+      },
+      point: {
+        radius: 5,
+        backgroundColor: 'rgba(255, 78, 202, 1)',
+        borderColor: 'rgba(255, 78, 202, 1)',
+        hoverRadius: 7,
+        hoverBorderWidth: 2,
+      },
+    },
   };
 
   return (
@@ -132,7 +190,7 @@ const CampaignsGrid = () => {
               Campaign Analytics
             </StyledCardHeader>
             <StyledCardBody>
-              <Line data={chartData} />
+              <Line data={chartData} options={chartOptions} />
             </StyledCardBody>
           </StyledCard>
         </Col>
