@@ -1,17 +1,17 @@
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
 import Map from "views/Map.js";
-import Notifications from "views/Notifications.js";
+/*import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
-import UserProfile from "views/UserProfile.js";
+import UserProfile from "views/UserProfile.js";*/
 
 var routes = [
   {
     path: "/explore-campaigns",
     name: "Explore Campaigns",
-    rtlName: "لوحة القيادة",
+    //rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
     component: <Icons />,
     layout: "/admin",
@@ -19,7 +19,7 @@ var routes = [
   {
     path: "/my-campaigns",
     name: "My Campaigns",
-    rtlName: "الرموز",
+    //rtlName: "الرموز",
     icon: "tim-icons icon-atom",
     component: <Dashboard />,
     layout: "/admin",
@@ -27,7 +27,7 @@ var routes = [
   {
     path: "/start-campaign",
     name: "Start Campaign",
-    rtlName: "خرائط",
+    //rtlName: "خرائط",
     icon: "tim-icons icon-pin",
     component: <Map />,
     layout: "/admin",
