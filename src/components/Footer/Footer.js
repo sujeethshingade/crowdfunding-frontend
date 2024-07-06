@@ -1,5 +1,5 @@
 import React from "react";
-
+import InfiniteScrollText from "./InfiniteScroll";
 import { Container, Nav, NavItem, NavLink } from "reactstrap";
 
 function Footer() {
@@ -25,6 +25,9 @@ function Footer() {
           <i className="tim-icons icon-heart-2" /> by{" "}Bit Busters{" "}
         </div>
       </Container>
+      <div>
+        <InfiniteScrollText />
+      </div>
     </footer>
   );
 }
