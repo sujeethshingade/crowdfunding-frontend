@@ -70,11 +70,9 @@ function AdminNavbar(props) {
           </NavbarToggler>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-              {/* Connect Your Wallet Button */}
               <Button color="primary" className="mr-2">
                 Connect Your Wallet
               </Button>
-              {/* User Profile Dropdown */}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle
                   caret

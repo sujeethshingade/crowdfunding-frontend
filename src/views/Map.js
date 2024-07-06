@@ -46,13 +46,12 @@ const CampaignForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send to server, update state)
     console.log("Submitted campaign:", campaign);
   };
   const EnlargedText = styled.span`
-  transition: font-size 0.3s ease-in-out; /* Smooth transition on font size change */
+  transition: font-size 0.3s ease-in-out;
   &:hover {
-    font-size: 1.4em; /* Enlarge text on hover */
+    font-size: 1.4em;
   }
 `;
 
@@ -175,7 +174,6 @@ const fadeIn = keyframes`
   }
 `;
 
-// Styled component for the CardHeader with fade-in animation
 const AnimatedCardHeader = styled(CardHeader)`
   text-align: center;
   font-size: 1.5rem;
@@ -187,7 +185,6 @@ const CampaignPage = () => {
   const [animateHeader, setAnimateHeader] = useState(false);
 
   useEffect(() => {
-    // Trigger the animation when component mounts
     setAnimateHeader(true);
   }, []);
 
@@ -208,7 +205,5 @@ const CampaignPage = () => {
     </div>
   );
 };
-
-
 
 export default CampaignPage;
