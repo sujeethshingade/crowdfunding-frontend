@@ -13,7 +13,7 @@
     "perfect-scrollbar": "1.5.5",
     "prop-types": "15.8.1",
     "react": ">=16.8.0",
-    "react-chartjs-2": "3.3.0",
+    "react-chartjs-2": "^3.3.0",
     "react-dom": ">=16.8.0",
     "react-notification-alert": "0.0.13",
     "react-router-dom": "6.11.1",
