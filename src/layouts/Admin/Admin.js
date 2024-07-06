@@ -105,8 +105,8 @@ function Admin(props) {
             <Sidebar
               routes={routes}
               logo={{
-                outterLink: "https://www.creative-tim.com/",
-                text: "Creative Tim",
+                outterLink: "#",
+                text: "FundX",
                 imgSrc: logo,
               }}
               toggleSidebar={toggleSidebar}
@@ -121,7 +121,7 @@ function Admin(props) {
                 {getRoutes(routes)}
                 <Route
                   path="/"
-                  element={<Navigate to="/admin/dashboard" replace />}
+                  element={<Navigate to="/admin/explore-campaigns" replace />}
                 />
               </Routes>
               {
