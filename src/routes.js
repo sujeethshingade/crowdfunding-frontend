@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Icons from "views/Icons.js";
-import Map from "views/Map.js";
-import Typography from "views/Typography";
+import Explore from "views/Explore.js";
+import My from "views/My.js";
+import Start from "views/Start";
 
 const EnlargedText = styled.span`
   transition: font-size 0.3s ease-in-out;
@@ -20,7 +20,7 @@ const routes = [
       </EnlargedText>
     ),
     icon: "tim-icons icon-chart-pie-36",
-    component: <Icons />,
+    component: <Explore />,
     layout: "/admin",
   },
   {
@@ -31,7 +31,7 @@ const routes = [
       </EnlargedText>
     ),
     icon: "tim-icons icon-atom",
-    component: <Typography />,
+    component: <Start />,
     layout: "/admin",
   },
   {
@@ -42,7 +42,7 @@ const routes = [
       </EnlargedText>
     ),
     icon: "tim-icons icon-pin",
-    component: <Map />,
+    component: <My />,
     layout: "/admin",
   },
 ];
