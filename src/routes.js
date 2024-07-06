@@ -8,7 +8,7 @@ import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";*/
 
 var routes = [
-  {
+ {
     path: "/explore-campaigns",
     name: "Explore Campaigns",
     //rtlName: "لوحة القيادة",
