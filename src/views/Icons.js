@@ -59,6 +59,7 @@ const StyledCard = styled(Card)`
   
   &:hover {
     transform: translateY(-10px); /* Moves the card up by 10px on hover */
+    box-shadow: 0 10px 20px rgba(128, 0, 128, 0.6);
   }
 `;
 
