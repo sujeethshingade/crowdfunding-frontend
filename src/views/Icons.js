@@ -10,7 +10,7 @@ const activeCampaigns = [
     description: "Our community has been devastated by a recent wildfire, leaving many families without homes. We are seeking your support to help rebuild these homes and restore hope to those affected. Your contributions will go towards construction materials, labor costs, transportation and essential household items. Let's come together and make a difference!",
     goal: 4.20,
     endDate: "2024-9-30",
-    image: "https://via.placeholder.com/150",
+    image: process.env.PUBLIC_URL + "/campaign-01.jpg",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const activeCampaigns = [
     description: "We aim to empower women in rural areas by providing them with the resources and training needed to start sustainable farming businesses. This initiative will help create jobs, promote environmental sustainability, and improve the overall quality of life in these communities. Your support will fund training programs, equipment, and seeds for these aspiring entrepreneurs.",
     goal: 1.69,
     endDate: "2024-10-15",
-    image: "https://via.placeholder.com/150",
+    image: process.env.PUBLIC_URL + "/campaign-02.jpg",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const activeCampaigns = [
     description: "We are revolutionizing education by introducing virtual reality (VR) classrooms to schools in underserved areas. This cutting-edge technology will provide students with immersive learning experiences, making education more engaging and effective. Your donations will help us purchase VR equipment, develop educational content, and train teachers to integrate VR into their classrooms.",
     goal: 2.47,
     endDate: "2024-11-10",
-    image: "https://via.placeholder.com/150",
+    image: process.env.PUBLIC_URL + "/campaign-03.jpg",
   },
 ];
 
