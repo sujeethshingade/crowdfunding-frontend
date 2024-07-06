@@ -9,7 +9,7 @@ const activeCampaigns = [
     creator: "Sarah Thompson",
     description: "Our community has been devastated by a recent wildfire, leaving many families without homes. We are seeking your support to help rebuild these homes and restore hope to those affected. Your contributions will go towards construction materials, labor costs, transportation and essential household items. Let's come together and make a difference!",
     goal: 4.20,
-    collected: 3.15,
+    collected: 3.5,
     endDate: "2024-9-30",
     image: process.env.PUBLIC_URL + "/campaign-01.jpg",
   },

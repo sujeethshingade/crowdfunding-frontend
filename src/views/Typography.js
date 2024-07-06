@@ -1,214 +1,144 @@
-/*!
-
-=========================================================
-* Black Dashboard React v1.2.2
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
+import { Card, CardHeader, CardBody, Col, Row, Button, Progress } from "reactstrap";
+import styled from "styled-components";
+import { Line } from "react-chartjs-2";
 
-// reactstrap components
-import { Card, CardHeader, CardBody, CardTitle, Row, Col } from "reactstrap";
+const activeCampaigns = [
+  {
+    id: 1,
+    name: "Help Rebuild Homes After the Wildfire Disaster in Southern California",
+    creator: "Sarah Thompson",
+    description: "Our community has been devastated by a recent wildfire, leaving many families without homes. We are seeking your support to help rebuild these homes and restore hope to those affected. Your contributions will go towards construction materials, labor costs, transportation and essential household items. Let's come together and make a difference!",
+    goal: 4.20,
+    collected: 3.5,
+    endDate: "2024-9-30",
+    image: process.env.PUBLIC_URL + "/campaign-01.jpg",
+    donations: [
+    { "date": "2024-01-01", "amount": 0.0 },
+    { "date": "2024-01-18", "amount": 0.27 },
+    { "date": "2024-02-5", "amount": 0.71 },
+    { "date": "2024-02-28", "amount": 1.1 },
+    { "date": "2024-03-05", "amount": 1.2 },
+    { "date": "2024-03-16", "amount": 1.4 },
+    { "date": "2024-04-07", "amount": 1.95 },
+    { "date": "2024-04-19", "amount": 2.4 },
+    { "date": "2024-04-30", "amount": 2.6 },
+    { "date": "2024-05-02", "amount": 2.75 },
+    { "date": "2024-06-01", "amount": 3.09 },
+    { "date": "2024-06-21", "amount": 3.36 },
+    { "date": "2024-07-07", "amount": 3.5 },
+    ]
+  },
+];
 
-function Typography() {
+const StyledParagraph = styled.p`
+  margin-bottom: 10px;
+  text-align: justify;
+`;
+
+const StyledCardHeader = styled(CardHeader)`
+  font-weight: bold;
+`;
+
+const StyledCardBody = styled(CardBody)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const BoldLabel = styled.span`
+  font-weight: bold;
+`;
+
+const StyledCard = styled(Card)`
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(128, 0, 128, 0.5);
+  }
+`;
+
+const StyledButton = styled(Button)`
+  margin-top: 20px;
+`;
+
+const CampaignsGrid = () => {
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const calculateProgress = (collected, goal) => {
+    return Math.min((collected / goal) * 100, 100);
+  };
+
+  const campaign = activeCampaigns[0]; 
+
+  const chartData = {
+    labels: campaign.donations.map((donation) => formatDate(donation.date)),
+    datasets: [
+      {
+        label: "Amount Collected in ETH",
+        data: campaign.donations.map((donation) => donation.amount),
+        fill: false,
+        borderColor: "rgb(255, 78, 202)",
+        tension: 0.1,
+      },
+    ],
+  };
+
   return (
-    <>
-      <div className="content">
-        <Row>
-          <Col md="12">
-            <Card>
-              <CardHeader className="mb-5">
-                <h5 className="card-category">Black Table Heading</h5>
-                <CardTitle tag="h3">
-                  Created using Poppins Font Family
-                </CardTitle>
-              </CardHeader>
-              <CardBody>
-                <div className="typography-line">
-                  <h1>
-                    <span>Header 1</span>
-                    The Life of Black Dashboard React
-                  </h1>
-                </div>
-                <div className="typography-line">
-                  <h2>
-                    <span>Header 2</span>
-                    The Life of Black Dashboard React
-                  </h2>
-                </div>
-                <div className="typography-line">
-                  <h3>
-                    <span>Header 3</span>
-                    The Life of Black Dashboard React
-                  </h3>
-                </div>
-                <div className="typography-line">
-                  <h4>
-                    <span>Header 4</span>
-                    The Life of Black Dashboard React
-                  </h4>
-                </div>
-                <div className="typography-line">
-                  <h5>
-                    <span>Header 5</span>
-                    The Life of Black Dashboard React
-                  </h5>
-                </div>
-                <div className="typography-line">
-                  <h6>
-                    <span>Header 6</span>
-                    The Life of Black Dashboard React
-                  </h6>
-                </div>
-                <div className="typography-line">
-                  <p>
-                    <span>Paragraph</span>I will be the leader of a company that
-                    ends up being worth billions of dollars, because I got the
-                    answers. I understand culture. I am the nucleus. I think
-                    that’s a responsibility that I have, to push possibilities,
-                    to show people, this is the level that things could be at.
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Quote</span>
-                  <blockquote>
-                    <p className="blockquote blockquote-primary">
-                      "I will be the leader of a company that ends up being
-                      worth billions of dollars, because I got the answers. I
-                      understand culture. I am the nucleus. I think that’s a
-                      responsibility that I have, to push possibilities, to show
-                      people, this is the level that things could be at." <br />
-                      <br />
-                      <small>- Noaa</small>
-                    </p>
-                  </blockquote>
-                </div>
-                <div className="typography-line">
-                  <span>Muted Text</span>
-                  <p className="text-muted">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Primary Text</span>
-                  <p className="text-primary">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Info Text</span>
-                  <p className="text-info">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Success Text</span>
-                  <p className="text-success">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Warning Text</span>
-                  <p className="text-warning">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <span>Danger Text</span>
-                  <p className="text-danger">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div className="typography-line">
-                  <h2>
-                    <span>Small Tag</span>
-                    Header with small subtitle <br />
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
-                </div>
-                <div className="typography-line">
-                  <span>Lists</span>
-                  <Row>
-                    <Col md="3">
-                      <h5>Unordered List</h5>
-                      <ul>
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li className="list-unstyled">
-                          <ul>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                            <li>List Item</li>
-                          </ul>
-                        </li>
-                        <li>List Item</li>
-                      </ul>
-                    </Col>
-                    <Col md="3">
-                      <h5>Ordered List</h5>
-                      <ol>
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li>List item</li>
-                        <li>List Item</li>
-                      </ol>
-                    </Col>
-                    <Col md="3">
-                      <h5>Unstyled List</h5>
-                      <ul className="list-unstyled">
-                        <li>List Item</li>
-                        <li>List Item</li>
-                        <li>List item</li>
-                        <li>List Item</li>
-                      </ul>
-                    </Col>
-                    <Col md="3">
-                      <h5>Inline List</h5>
-                      <ul className="list-inline">
-                        <li className="list-inline-item">List1</li>
-                        <li className="list-inline-item">List2</li>
-                        <li className="list-inline-item">List3</li>
-                      </ul>
-                    </Col>
-                  </Row>
-                </div>
-                <div className="typography-line">
-                  <span>Code</span>
-                  <p>
-                    This is <code>.css-class-as-code</code>, an example of an
-                    inline code element. Wrap inline code within a{" "}
-                    <code>{`<code>...</code>`}</code>
-                    tag.
-                  </p>
-                  <pre>
-                    1. #This is an example of preformatted text.
-                    <br />
-                    2. #Here is another line of code
-                  </pre>
-                </div>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
-      </div>
-    </>
+    <div className="content">
+      <Row>
+        <Col md="6" lg="4">
+          <StyledCard className="mb-4">
+            <StyledCardHeader className="text-center">
+              {campaign.name}
+            </StyledCardHeader>
+            <StyledCardBody>
+              <img
+                src={campaign.image}
+                alt={campaign.name}
+                className="img-fluid mb-3 rounded"
+              />
+              <div>
+                <StyledParagraph>
+                  <BoldLabel>Creator: </BoldLabel>{campaign.creator}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <BoldLabel>Description: </BoldLabel>{campaign.description}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <BoldLabel>End Date: </BoldLabel>{formatDate(campaign.endDate)}
+                </StyledParagraph>
+                <StyledParagraph>
+                  <BoldLabel>Goal: </BoldLabel>{campaign.goal.toLocaleString()} ETH
+                </StyledParagraph>
+                <StyledParagraph>
+                  <BoldLabel>Collected: </BoldLabel>{campaign.collected.toLocaleString()} ETH
+                </StyledParagraph>
+                <Progress value={calculateProgress(campaign.collected, campaign.goal)} />
+              </div>
+              <StyledButton color="primary" block>
+                Donate
+              </StyledButton>
+            </StyledCardBody>
+          </StyledCard>
+        </Col>
+        <Col md="6" lg="8">
+          <StyledCard className="mb-4">
+            <StyledCardHeader className="text-center">
+              Campaign Analytics
+            </StyledCardHeader>
+            <StyledCardBody>
+              <Line data={chartData} />
+            </StyledCardBody>
+          </StyledCard>
+        </Col>
+      </Row>
+    </div>
   );
-}
+};
 
-export default Typography;
+export default CampaignsGrid;

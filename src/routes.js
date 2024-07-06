@@ -1,6 +1,7 @@
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
 import Map from "views/Map.js";
+import Typography from "views/Typography";
 /*import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
@@ -21,7 +22,7 @@ var routes = [
     name: "My Campaigns",
     //rtlName: "الرموز",
     icon: "tim-icons icon-atom",
-    component: <Dashboard />,
+    component: <Typography />,
     layout: "/admin",
   },
   {
