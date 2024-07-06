@@ -9,7 +9,7 @@ import UserProfile from "views/UserProfile.js";
 
 var routes = [
   {
-    path: "/explore-campaigns",
+    path: "/dashboard",
     name: "Explore Campaigns",
     rtlName: "لوحة القيادة",
     icon: "tim-icons icon-chart-pie-36",
