@@ -88,7 +88,6 @@ function Admin(props) {
             <Sidebar
               routes={routes}
               logo={{
-                outterLink: "#",
                 text: "FundX",
                 imgSrc: logo,
               }}
