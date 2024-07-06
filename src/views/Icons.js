@@ -54,16 +54,14 @@ const BoldLabel = styled.span`
 `;
 
 const StyledCard = styled(Card)`
+  margin-bottom: 20px;
   transition: transform 0.3s ease; /* Smooth transition */
   
   &:hover {
-    transform: translateY(-10px); /* Moves the card up by 10px */
+    transform: translateY(-10px); /* Moves the card up by 10px on hover */
   }
 `;
 
-const StyledCard = styled(Card)`
-  margin-bottom: 20px;
-`;
 
 const StyledButton = styled(Button)`
   margin-top: 20px;
