@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
 import Map from "views/Map.js";
 import Typography from "views/Typography";
 
 const EnlargedText = styled.span`
-  transition: font-size 0.3s ease-in-out; /* Smooth transition on font size change */
+  transition: font-size 0.3s ease-in-out;
   &:hover {
-    font-size: 1.4em; /* Enlarge text on hover */
+    font-size: 1.4em;
   }
 `;
 
