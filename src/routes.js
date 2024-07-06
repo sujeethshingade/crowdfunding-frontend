@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Dashboard from "views/Dashboard.js";
 import Icons from "views/Icons.js";
 import Map from "views/Map.js";
+import Typography from "views/Typography";
 
 const EnlargedText = styled.span`
   transition: font-size 0.3s ease-in-out; /* Smooth transition on font size change */
@@ -31,7 +32,7 @@ const routes = [
       </EnlargedText>
     ),
     icon: "tim-icons icon-atom",
-    component: <Dashboard />,
+    component: <Typography />,
     layout: "/admin",
   },
   {
