@@ -50,6 +50,14 @@ const BoldLabel = styled.span`
   font-weight: bold;
 `;
 
+const StyledCard = styled(Card)`
+  transition: transform 0.3s ease; /* Smooth transition */
+  
+  &:hover {
+    transform: translateY(-10px); /* Moves the card up by 10px */
+  }
+`;
+
 const CampaignsGrid = () => {
   // Function to format the date
   const formatDate = (dateString) => {
@@ -62,7 +70,7 @@ const CampaignsGrid = () => {
       <Row className="justify-content-center">
         {activeCampaigns.map((campaign) => (
           <Col md="6" lg="4" key={campaign.id}>
-            <Card className="mb-4">
+            <StyledCard className="mb-4">
               <StyledCardHeader className="text-center">
                 {campaign.name}
               </StyledCardHeader>
@@ -90,7 +98,7 @@ const CampaignsGrid = () => {
                   Donate
                 </Button>
               </StyledCardBody>
-            </Card>
+            </StyledCard>
           </Col>
         ))}
       </Row>
