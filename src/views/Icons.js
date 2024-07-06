@@ -5,7 +5,7 @@ import styled from "styled-components";
 const activeCampaigns = [
   {
     id: 1,
-    name: "Help Rebuild Homes After the Wildfire Disaster",
+    name: "Help Rebuild Homes After the Wildfire Disaster in Southern California",
     creator: "Sarah Thompson",
     description: "Our community has been devastated by a recent wildfire, leaving many families without homes. We are seeking your support to help rebuild these homes and restore hope to those affected. Your contributions will go towards construction materials, labor costs, transportation and essential household items. Let's come together and make a difference!",
     goal: 4.20,
@@ -55,11 +55,11 @@ const BoldLabel = styled.span`
 
 const StyledCard = styled(Card)`
   margin-bottom: 20px;
-  transition: transform 0.3s ease; /* Smooth transition */
+  transition: transform 0.3s ease;
   
   &:hover {
-    transform: translateY(-10px); /* Moves the card up by 10px on hover */
-    box-shadow: 0 10px 20px rgba(128, 0, 128, 0.6);
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(128, 0, 128, 0.5);
   }
 `;
 
