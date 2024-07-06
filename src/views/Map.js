@@ -89,12 +89,12 @@ const CampaignForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="goal">Goal Amount</Label>
+        <Label for="goal">Goal Amount (ETH)</Label>
         <Input
           type="number"
           name="goal"
           id="goal"
-          placeholder="Enter the Goal Amount"
+          placeholder="Enter the Goal Amount in ETH"
           value={campaign.goal}
           onChange={handleChange}
           required
