@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -13,6 +13,7 @@ import {
   FormText,
   Tooltip,
 } from "reactstrap";
+import styled, { keyframes } from "styled-components";
 
 const CampaignForm = () => {
   const [campaign, setCampaign] = useState({
@@ -48,11 +49,21 @@ const CampaignForm = () => {
     // Handle form submission (e.g., send to server, update state)
     console.log("Submitted campaign:", campaign);
   };
+  const EnlargedText = styled.span`
+  transition: font-size 0.3s ease-in-out; /* Smooth transition on font size change */
+  &:hover {
+    font-size: 1.4em; /* Enlarge text on hover */
+  }
+`;
 
   return (
     <Form onSubmit={handleSubmit} className="campaign-form">
       <FormGroup>
-        <Label for="name">Campaign Name</Label>
+        <Label for="name">
+          <EnlargedText>
+            Campaign Name
+          </EnlargedText>
+        </Label>
         <Input
           type="text"
           name="name"
@@ -65,7 +76,11 @@ const CampaignForm = () => {
         <FormText>Make it catchy and descriptive!</FormText>
       </FormGroup>
       <FormGroup>
-        <Label for="creator">Creator's Name</Label>
+        <Label for="creator">
+          <EnlargedText>
+            Creator's Name
+          </EnlargedText>
+        </Label>
         <Input
           type="text"
           name="creator"
@@ -77,7 +92,11 @@ const CampaignForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="description">Description</Label>
+        <Label for="description">
+          <EnlargedText>
+            Description
+          </EnlargedText>
+        </Label>
         <Input
           type="textarea"
           name="description"
@@ -89,7 +108,11 @@ const CampaignForm = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="goal">Goal Amount (ETH)</Label>
+        <Label for="goal">
+          <EnlargedText>
+            Goal Amount (ETH)
+          </EnlargedText>
+        </Label>
         <Input
           type="number"
           name="goal"
@@ -102,7 +125,11 @@ const CampaignForm = () => {
         <FormText>Set a realistic goal that you can achieve.</FormText>
       </FormGroup>
       <FormGroup>
-        <Label for="endDate">End Date</Label>
+        <Label for="endDate">
+          <EnlargedText>
+            End Date
+          </EnlargedText>
+        </Label>
         <Input
           type="date"
           name="endDate"
@@ -114,7 +141,11 @@ const CampaignForm = () => {
         <FormText>Select a date that gives you enough time to reach your goal.</FormText>
       </FormGroup>
       <FormGroup>
-        <Label for="image">Campaign Image</Label>
+        <Label for="image">
+          <EnlargedText>
+            Campaign Image
+          </EnlargedText>
+        </Label>
         <Input
           type="file"
           name="image"
@@ -135,13 +166,39 @@ const CampaignForm = () => {
   );
 };
 
-function CampaignPage() {
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+// Styled component for the CardHeader with fade-in animation
+const AnimatedCardHeader = styled(CardHeader)`
+  text-align: center;
+  font-size: 1.5rem;
+  animation: ${fadeIn} 1s ease-in forwards;
+  opacity: 0; 
+`;
+
+const CampaignPage = () => {
+  const [animateHeader, setAnimateHeader] = useState(false);
+
+  useEffect(() => {
+    // Trigger the animation when component mounts
+    setAnimateHeader(true);
+  }, []);
+
   return (
     <div className="content">
       <Row className="justify-content-center">
         <Col md="8">
           <Card className="card-plain shadow-lg p-4 rounded">
-            <CardHeader className="text-center h4">Start Campaign</CardHeader>
+            <AnimatedCardHeader className={animateHeader ? 'fade-in' : ''}>
+              Start Campaign
+            </AnimatedCardHeader>
             <CardBody>
               <CampaignForm />
             </CardBody>
@@ -150,6 +207,8 @@ function CampaignPage() {
       </Row>
     </div>
   );
-}
+};
+
+
 
 export default CampaignPage;

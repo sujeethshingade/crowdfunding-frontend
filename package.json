@@ -10,6 +10,7 @@
     "bootstrap": "4.6.2",
     "chart.js": "3.9.1",
     "classnames": "2.3.2",
+    "framer-motion": "^11.2.13",
     "perfect-scrollbar": "1.5.5",
     "prop-types": "15.8.1",
     "react": ">=16.8.0",
@@ -50,6 +51,7 @@
     "reactstrap": "8.10.1"
   },
   "devDependencies": {
+    "eslint-plugin-react": "^7.34.3",
     "typescript": "5.0.4"
   },
   "overrides": {
