@@ -1,6 +1,6 @@
 import React from "react";
 import InfiniteScrollText from "./InfiniteScroll";
-import { Container, Nav, NavItem, NavLink } from "reactstrap";
+import { Container } from "reactstrap";
 
 function Footer() {
   return (

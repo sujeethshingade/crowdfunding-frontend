@@ -26,9 +26,6 @@ function Sidebar(props) {
       }
     };
   });
-  const linkOnClick = () => {
-    document.documentElement.classList.remove("nav-open");
-  };
   const { routes, rtlActive, logo } = props;
   let logoImg = null;
   let logoText = null;
@@ -39,6 +36,7 @@ function Sidebar(props) {
           href={logo.outterLink}
           className="simple-text logo-mini"
           target="_blank"
+          rel="noreferrer"
           onClick={props.toggleSidebar}
         >
           <div className="logo-img">
@@ -51,6 +49,7 @@ function Sidebar(props) {
           href={logo.outterLink}
           className="simple-text logo-normal"
           target="_blank"
+          rel="noreferrer"
           onClick={props.toggleSidebar}
         >
           {logo.text}
