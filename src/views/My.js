@@ -15,6 +15,53 @@ import {
 } from "reactstrap";
 import styled, { keyframes } from "styled-components";
 
+const fadeInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const fadeInRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const EnlargedText = styled.span`
+  transition: font-size 0.3s ease-in-out;
+  &:hover {
+    font-size: 1.4em;
+  }
+`;
+
+const SlideInLeft = styled(FormGroup)`
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  &.slide-in-left {
+    animation: ${fadeInLeft} 0.5s forwards;
+  }
+`;
+
+const SlideInRight = styled(FormGroup)`
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  &.slide-in-right {
+    animation: ${fadeInRight} 0.5s forwards;
+  }
+`;
+
 const CampaignForm = () => {
   const [campaign, setCampaign] = useState({
     name: "",
@@ -48,16 +95,19 @@ const CampaignForm = () => {
     e.preventDefault();
     console.log("Submitted campaign:", campaign);
   };
-  const EnlargedText = styled.span`
-  transition: font-size 0.3s ease-in-out;
-  &:hover {
-    font-size: 1.4em;
-  }
-`;
+
+  /*useEffect(() => {
+    const formGroups = document.querySelectorAll(".slide-in");
+    formGroups.forEach((formGroup, index) => {
+      setTimeout(() => {
+        formGroup.classList.add("slide-in");
+      }, index * 100); // Adjust the delay as needed
+    });
+  }, []);*/
 
   return (
     <Form onSubmit={handleSubmit} className="campaign-form">
-      <FormGroup>
+      <SlideInLeft className="slide-in-left">
         <Label for="name">
           <EnlargedText>
             Campaign Name
@@ -73,8 +123,8 @@ const CampaignForm = () => {
           required
         />
         <FormText>Make it catchy and descriptive!</FormText>
-      </FormGroup>
-      <FormGroup>
+      </SlideInLeft>
+      <SlideInRight className="slide-in-right">
         <Label for="creator">
           <EnlargedText>
             Creator's Name
@@ -89,8 +139,8 @@ const CampaignForm = () => {
           onChange={handleChange}
           required
         />
-      </FormGroup>
-      <FormGroup>
+      </SlideInRight>
+      <SlideInLeft className="slide-in-left">
         <Label for="description">
           <EnlargedText>
             Description
@@ -105,8 +155,8 @@ const CampaignForm = () => {
           onChange={handleChange}
           required
         />
-      </FormGroup>
-      <FormGroup>
+      </SlideInLeft>
+      <SlideInRight className="slide-in-right">
         <Label for="goal">
           <EnlargedText>
             Goal Amount (ETH)
@@ -122,8 +172,8 @@ const CampaignForm = () => {
           required
         />
         <FormText>Set a realistic goal that you can achieve.</FormText>
-      </FormGroup>
-      <FormGroup>
+      </SlideInRight>
+      <SlideInLeft className="slide-in-left">
         <Label for="endDate">
           <EnlargedText>
             End Date
@@ -138,8 +188,8 @@ const CampaignForm = () => {
           required
         />
         <FormText>Select a date that gives you enough time to reach your goal.</FormText>
-      </FormGroup>
-      <FormGroup>
+      </SlideInLeft>
+      <SlideInRight className="slide-in-right">
         <Label for="image">
           <EnlargedText>
             Campaign Image
@@ -156,7 +206,7 @@ const CampaignForm = () => {
         <FormText color="muted" style={{ textDecoration: 'underline' }}>
           Upload an image
         </FormText>
-      </FormGroup>
+      </SlideInRight>
       <Button type="submit" color="primary" id="submitBtn">Start Campaign</Button>
       <Tooltip placement="right" isOpen={tooltipOpen} target="submitBtn" toggle={toggleTooltip}>
         Click to Submit your Campaign!
@@ -165,7 +215,8 @@ const CampaignForm = () => {
   );
 };
 
-const fadeIn = keyframes`
+
+const fadeIn1 = keyframes`
   from {
     opacity: 0;
   }
@@ -177,7 +228,7 @@ const fadeIn = keyframes`
 const AnimatedCardHeader = styled(CardHeader)`
   text-align: center;
   font-size: 1.5rem;
-  animation: ${fadeIn} 1s ease-in forwards;
+  animation: ${fadeIn1} 1s ease-in forwards;
   opacity: 0; 
 `;
 
